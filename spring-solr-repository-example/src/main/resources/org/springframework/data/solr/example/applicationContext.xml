@@ -13,8 +13,8 @@
   CONTEXT SETTINGS
   #####################################
    -->
-  <context:property-placeholder location="classpath:at/pagu/data/solr/example/configuration.properties" ignore-resource-not-found="true" />
-  <context:component-scan base-package="at.pagu.data.solr.example" />
+  <context:property-placeholder location="classpath:org/springframework/data/solr/example/configuration.properties" ignore-resource-not-found="true" />
+  <context:component-scan base-package="org.springframework.data.solr.example" />
 
  <!-- 
   #####################################
@@ -34,7 +34,7 @@
     </constructor-arg>
   </bean>
 
-  <bean id="searchRepository" class="at.pagu.data.solr.example.repository.SolrProductRepository">
+  <bean id="searchRepository" class="org.springframework.data.solr.example.repository.SolrProductRepository">
     <property name="solrOperations" ref="solrTemplate" />
   </bean>
 

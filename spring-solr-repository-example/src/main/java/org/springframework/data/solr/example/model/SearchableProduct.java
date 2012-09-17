@@ -13,23 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package at.pagu.data.solr.example.repository;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.repository.CrudRepository;
-
-import at.pagu.data.solr.example.model.Product;
-import at.pagu.soldockr.core.query.result.FacetPage;
+package org.springframework.data.solr.example.model;
 
 /**
  * @author Christoph Strobl
  */
-public interface ProductRepository extends CrudRepository<Product, String> {
+public interface SearchableProduct {
 
-  Page<Product> findByPopularity(Integer popularity);
-
-  FacetPage<Product> findByNameStartingWithAndFacetOnAvailable(String namePrefix);
-
-  Page<Product> findByAvailableTrue();
+  String ID_FIELD = "id";
+  String NAME_FIELD = "name";
+  String PRICE_FIELD = "price";
+  String AVAILABLE_FIELD = "inStock";
+  String CATEGORY_FIELD = "cat";
+  String WEIGHT_FIELD = "weight";
+  String POPULARITY_FIELD = "popularity";
 
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package at.pagu.data.solr.example.repository;
+package org.springframework.data.solr.example;
 
 import java.util.List;
 
@@ -26,10 +26,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.solr.example.model.Product;
+import org.springframework.data.solr.example.repository.CustomSolrRepositoryImpl;
+import org.springframework.data.solr.example.repository.DerivedSolrProductRepository;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import at.pagu.data.solr.example.model.Product;
 import at.pagu.soldockr.core.SolrOperations;
 import at.pagu.soldockr.core.query.SimpleQuery;
 import at.pagu.soldockr.core.query.SimpleStringCriteria;
@@ -39,7 +41,7 @@ import at.pagu.soldockr.repository.support.SolrRepositoryFactory;
  * @author Christoph Strobl
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:at/pagu/data/solr/example/applicationContext.xml")
+@ContextConfiguration("classpath:org/springframework/data/solr/example/applicationContext.xml")
 public class ITestDerivedSolrProductRepository extends AbstractSolrIntegrationTest {
   
   @Autowired

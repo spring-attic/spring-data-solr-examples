@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package at.pagu.data.solr.example.repository;
+package org.springframework.data.solr.example.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.solr.example.model.Product;
 
-import at.pagu.data.solr.example.model.Product;
 
 /**
  * @author Christoph Strobl

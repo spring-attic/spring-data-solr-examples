@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package at.pagu.data.solr.example.repository;
+package org.springframework.data.solr.example.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.data.solr.example.model.Product;
 
-import at.pagu.data.solr.example.model.Product;
 import at.pagu.soldockr.core.query.Criteria;
 import at.pagu.soldockr.core.query.FacetOptions;
 import at.pagu.soldockr.core.query.FacetQuery;
