@@ -17,32 +17,31 @@ package org.springframework.data.solr.example.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.solr.core.SolrOperations;
+import org.springframework.data.solr.core.query.SimpleQuery;
+import org.springframework.data.solr.core.query.SimpleStringCriteria;
 import org.springframework.data.solr.example.model.Product;
-
-import at.pagu.soldockr.core.SolrOperations;
-import at.pagu.soldockr.core.query.SimpleQuery;
-import at.pagu.soldockr.core.query.SimpleStringCriteria;
 
 /**
  * @author Christoph Strobl
  */
 public class CustomSolrRepositoryImpl implements CustomSolrRepository {
-	
+
 	private SolrOperations solrTemplate;
-	
+
 	public CustomSolrRepositoryImpl() {
 		super();
 	}
-	
+
 	public CustomSolrRepositoryImpl(SolrOperations solrTemplate) {
 		super();
 		this.solrTemplate = solrTemplate;
 	}
 
 	@Override
-	public Page<Product> findProductsByCustomImplementation(String value,
-			Pageable page) {
-		return solrTemplate.executeListQuery(new SimpleQuery(new SimpleStringCriteria("name:"+value)).setPageRequest(page), Product.class);
+	public Page<Product> findProductsByCustomImplementation(String value, Pageable page) {
+		return solrTemplate.executeListQuery(
+				new SimpleQuery(new SimpleStringCriteria("name:" + value)).setPageRequest(page), Product.class);
 	}
 
 }

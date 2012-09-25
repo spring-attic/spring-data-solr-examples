@@ -17,19 +17,18 @@ package org.springframework.data.solr.example.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.solr.core.query.result.FacetPage;
 import org.springframework.data.solr.example.model.Product;
-
-import at.pagu.soldockr.core.query.result.FacetPage;
 
 /**
  * @author Christoph Strobl
  */
 public interface ProductRepository extends CrudRepository<Product, String> {
 
-  Page<Product> findByPopularity(Integer popularity);
+	Page<Product> findByPopularity(Integer popularity);
 
-  FacetPage<Product> findByNameStartingWithAndFacetOnAvailable(String namePrefix);
+	FacetPage<Product> findByNameStartingWithAndFacetOnAvailable(String namePrefix);
 
-  Page<Product> findByAvailableTrue();
+	Page<Product> findByAvailableTrue();
 
 }

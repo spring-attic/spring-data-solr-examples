@@ -28,7 +28,7 @@
     <property name="maxTotalConnections" value="1000" />
   </bean>
 
-  <bean id="solrTemplate" class="at.pagu.soldockr.core.SolrTemplate" scope="singleton">
+  <bean id="solrTemplate" class="org.springframework.data.solr.core.SolrTemplate" scope="singleton">
     <constructor-arg>
       <bean class="org.apache.solr.client.solrj.impl.CommonsHttpSolrServer" parent="solrServer" />
     </constructor-arg>

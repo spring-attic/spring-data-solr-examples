@@ -16,9 +16,10 @@
     <commons-lang.version>2.6</commons-lang.version>
     <solr.version>3.6.0</solr.version>
     <apache.httpcomponents.version>4.2</apache.httpcomponents.version>
-    <spring.data-commons.version>1.3.2.RELEASE</spring.data-commons.version>
+    <spring.data-commons.version>1.4.0.BUILD-SNAPSHOT</spring.data-commons.version>
+    <spring.dao.version>2.0.8</spring.dao.version>
+    <spring.data-solr.version>1.0.0.BUILD-SNAPSHOT</spring.data-solr.version>
     <logback-classic.version>1.0.3</logback-classic.version>
-    <sol-dock-r.version>0.2.0</sol-dock-r.version>
   </properties>
 
   <licenses>
@@ -58,6 +59,17 @@
         </exclusion>
       </exclusions>
     </dependency>
+     <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-dao</artifactId>
+    	<version>${spring.dao.version}</version>
+    	<exclusions>
+	        <exclusion>
+	          <groupId>commons-logging</groupId>
+	          <artifactId>commons-logging</artifactId>
+	        </exclusion>
+      	</exclusions>
+	</dependency>
 
     <!-- SPRING DATA -->
     <dependency>
@@ -113,10 +125,11 @@
 
     <!-- SOLR -->
     <dependency>
-      <groupId>at.pagu</groupId>
-      <artifactId>sol-dock-r</artifactId>
-      <version>${sol-dock-r.version}</version>
-      <systemPath>${project.basedir}/lib/sol-dock-r-${sol-dock-r.version}.jar</systemPath>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-solr</artifactId>
+      <version>${spring.data-solr.version}</version>
+      <!-- TODO: remove sytemPath and scope once artifact is deployed to spring repository -->
+      <systemPath>${project.basedir}/lib/spring-data-solr-${spring.data-solr.version}.jar</systemPath>
       <scope>system</scope>
     </dependency>
     <dependency>
@@ -231,4 +244,11 @@
       <timezone>-5</timezone>
     </developer>
   </developers>
+  
+  <repositories>
+    <repository>
+      <id>spring-snapshots</id>
+      <url>http://repo.springsource.org/libs-snapshot</url>
+    </repository>
+  </repositories>
 </project>
