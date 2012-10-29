@@ -37,14 +37,14 @@ public class SolrProductRepository extends SimpleSolrRepository<Product> impleme
 	@Override
 	public Page<Product> findByPopularity(Integer popularity) {
 		Query query = new SimpleQuery(new Criteria(SolrSearchableFields.POPULARITY).is(popularity));
-		return getSolrOperations().executeListQuery(query, Product.class);
+		return getSolrOperations().queryForPage(query, Product.class);
 	}
 
 	@Override
 	public FacetPage<Product> findByNameStartingWithAndFacetOnAvailable(String namePrefix) {
 		FacetQuery query = new SimpleFacetQuery(new Criteria(SolrSearchableFields.NAME).startsWith(namePrefix));
 		query.setFacetOptions(new FacetOptions(SolrSearchableFields.AVAILABLE));
-		return getSolrOperations().executeFacetQuery(query, Product.class);
+		return getSolrOperations().queryForFacetPage(query, Product.class);
 	}
 
 	@Override
@@ -52,6 +52,6 @@ public class SolrProductRepository extends SimpleSolrRepository<Product> impleme
 		Query query = new SimpleQuery(new Criteria(new SimpleField(Criteria.WILDCARD)).expression(Criteria.WILDCARD));
 		query.addFilterQuery(new SimpleQuery(new Criteria(SolrSearchableFields.AVAILABLE).is(true)));
 
-		return getSolrOperations().executeListQuery(query, Product.class);
+		return getSolrOperations().queryForPage(query, Product.class);
 	}
 }

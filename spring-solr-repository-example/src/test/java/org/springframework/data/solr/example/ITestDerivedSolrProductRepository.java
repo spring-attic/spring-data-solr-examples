@@ -56,8 +56,8 @@ public class ITestDerivedSolrProductRepository extends AbstractSolrIntegrationTe
 
 	@After
 	public void tearDown() {
-		solrOperations.executeDelete(new SimpleQuery(new SimpleStringCriteria("*:*")));
-		solrOperations.executeCommit();
+		solrOperations.delete(new SimpleQuery(new SimpleStringCriteria("*:*")));
+		solrOperations.commit();
 	}
 
 	@Test

@@ -40,7 +40,7 @@ public class CustomSolrRepositoryImpl implements CustomSolrRepository {
 
 	@Override
 	public Page<Product> findProductsByCustomImplementation(String value, Pageable page) {
-		return solrTemplate.executeListQuery(
+		return solrTemplate.queryForPage(
 				new SimpleQuery(new SimpleStringCriteria("name:" + value)).setPageRequest(page), Product.class);
 	}
 
