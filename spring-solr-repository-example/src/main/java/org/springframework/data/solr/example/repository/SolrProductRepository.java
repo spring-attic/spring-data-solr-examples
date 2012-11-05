@@ -26,7 +26,7 @@ import org.springframework.data.solr.core.query.SimpleField;
 import org.springframework.data.solr.core.query.SimpleQuery;
 import org.springframework.data.solr.core.query.result.FacetPage;
 import org.springframework.data.solr.example.model.Product;
-import org.springframework.data.solr.repository.SimpleSolrRepository;
+import org.springframework.data.solr.repository.support.SimpleSolrRepository;
 
 /**
  * @author Christoph Strobl
