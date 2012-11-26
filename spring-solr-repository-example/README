@@ -7,7 +7,7 @@
    
 ### Installing Solr  ####
 1. Get solr
-   download: http://www.apache.org/dyn/closer.cgi/lucene/solr/3.6.0
+   download: http://www.apache.org/dyn/closer.cgi/lucene/solr/4.0.0
    
 2. Start solr server
    extract: unarchive to destination directory

@@ -46,21 +46,8 @@
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-solr</artifactId>
       <version>${spring.data-solr.version}</version>
-       <exclusions>
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
-
-    <!-- APACHE -->
-    <dependency> <!-- solrj depends on this one as well (should be fixed in 4.0)  -->
-      <groupId>commons-httpclient</groupId>
-      <artifactId>commons-httpclient</artifactId>
-      <version>3.1</version>
-    </dependency>
-    
+   
     <!-- LOGGING -->
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -72,6 +59,11 @@
       <artifactId>jul-to-slf4j</artifactId>
       <version>${slf4j.version}</version>
     </dependency>
+    <dependency>
+	    <groupId>commons-logging</groupId>
+	    <artifactId>commons-logging</artifactId>
+	    <version>1.1.1</version>
+	</dependency>
 
     <!-- TEST -->
     <dependency>
