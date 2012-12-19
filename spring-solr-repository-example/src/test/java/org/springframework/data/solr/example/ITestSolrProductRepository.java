@@ -23,7 +23,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.solr.core.query.result.FacetEntry;
+import org.springframework.data.solr.core.query.result.FacetFieldEntry;
 import org.springframework.data.solr.core.query.result.FacetPage;
 import org.springframework.data.solr.example.model.Product;
 import org.springframework.data.solr.example.repository.SolrProductRepository;
@@ -91,10 +91,10 @@ public class ITestSolrProductRepository extends AbstractSolrIntegrationTest {
 		FacetPage<Product> facetPage = repo.findByNameStartingWithAndFacetOnAvailable("pro");
 		Assert.assertEquals(10, facetPage.getNumberOfElements());
 
-		Page<FacetEntry> page = facetPage.getFacetResultPage(SolrSearchableFields.AVAILABLE);
+		Page<FacetFieldEntry> page = facetPage.getFacetResultPage(SolrSearchableFields.AVAILABLE);
 		Assert.assertEquals(2, page.getNumberOfElements());
 
-		for (FacetEntry entry : page) {
+		for (FacetFieldEntry entry : page) {
 			Assert.assertEquals(SolrSearchableFields.AVAILABLE.getName(), entry.getField().getName());
 			Assert.assertEquals(5, entry.getValueCount());
 		}
