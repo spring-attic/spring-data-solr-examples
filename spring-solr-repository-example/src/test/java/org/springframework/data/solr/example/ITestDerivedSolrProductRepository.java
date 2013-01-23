@@ -15,6 +15,7 @@
  */
 package org.springframework.data.solr.example;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.After;
@@ -124,4 +125,20 @@ public class ITestDerivedSolrProductRepository extends AbstractSolrIntegrationTe
 		Assert.assertEquals(1, page.getTotalElements());
 	}
 
+	@Test
+	public void testPartialUpdate() {
+		Product initial = createProduct(1);
+		initial.setCategories(Arrays.asList("cat-1"));
+		repo.save(initial);
+
+		Product loaded = repo.findOne(initial.getId());
+		Assert.assertEquals(1, loaded.getCategories().size());
+
+		List<String> categoryUpdate = Arrays.asList("cat-1", "cat-2", "cat-3");
+		repo.updateProductCategory(initial.getId(), categoryUpdate);
+
+		loaded = repo.findOne(initial.getId());
+		Assert.assertEquals(3, loaded.getCategories().size());
+		Assert.assertEquals(categoryUpdate, loaded.getCategories());
+	}
 }
