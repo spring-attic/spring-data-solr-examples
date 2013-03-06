@@ -32,7 +32,7 @@ import org.springframework.data.solr.repository.support.SimpleSolrRepository;
  * @author Christoph Strobl
  */
 @NoRepositoryBean
-public class SolrProductRepository extends SimpleSolrRepository<Product> implements ProductRepository {
+public class SolrProductRepository extends SimpleSolrRepository<Product, String> implements ProductRepository {
 
 	@Override
 	public Page<Product> findByPopularity(Integer popularity) {

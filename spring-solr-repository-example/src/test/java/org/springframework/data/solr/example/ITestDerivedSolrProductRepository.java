@@ -27,9 +27,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.solr.core.SolrOperations;
+import org.springframework.data.solr.core.query.PartialUpdate;
 import org.springframework.data.solr.core.query.SimpleQuery;
 import org.springframework.data.solr.core.query.SimpleStringCriteria;
 import org.springframework.data.solr.example.model.Product;
+import org.springframework.data.solr.example.model.SearchableProduct;
 import org.springframework.data.solr.example.repository.CustomSolrRepositoryImpl;
 import org.springframework.data.solr.example.repository.DerivedSolrProductRepository;
 import org.springframework.data.solr.repository.support.SolrRepositoryFactory;
@@ -140,5 +142,27 @@ public class ITestDerivedSolrProductRepository extends AbstractSolrIntegrationTe
 		loaded = repo.findOne(initial.getId());
 		Assert.assertEquals(3, loaded.getCategories().size());
 		Assert.assertEquals(categoryUpdate, loaded.getCategories());
+	}
+
+	@Test
+	public void testPartialUpdateWithNull() {
+		Product initial = createProduct(1);
+		initial.setCategories(Arrays.asList("cat-1"));
+		repo.save(initial);
+
+		Product loaded = repo.findOne(initial.getId());
+		Assert.assertEquals(1, loaded.getCategories().size());
+
+		PartialUpdate update = new PartialUpdate(SearchableProduct.ID_FIELD, initial.getId());
+		update.setValueOfField(SearchableProduct.POPULARITY_FIELD, 500);
+		update.setValueOfField(SearchableProduct.CATEGORY_FIELD, Arrays.asList("cat-1", "cat-2", "cat-3"));
+		update.setValueOfField(SearchableProduct.NAME_FIELD, null);
+		solrOperations.saveBean(update);
+		solrOperations.commit();
+
+		loaded = repo.findOne(initial.getId());
+		Assert.assertEquals(Integer.valueOf(500), loaded.getPopularity());
+		Assert.assertEquals(3, loaded.getCategories().size());
+		Assert.assertNull(loaded.getName());
 	}
 }
