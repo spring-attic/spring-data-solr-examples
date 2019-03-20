@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.springframework.data</groupId>
   <artifactId>spring-solr-repository-example</artifactId>
   <version>1.0.0.BUILD-SNAPSHOT</version>
   <inceptionYear>2012</inceptionYear>
-  <url>http://github.com/SpringSource/spring-data-solr-examples</url>
+  <url>https://github.com/SpringSource/spring-data-solr-examples</url>
   <name>Spring Data Solr Example</name>
 
   <properties>
@@ -139,7 +139,7 @@
   <repositories>
     <repository>
       <id>spring-snapshots</id>
-      <url>http://repo.springsource.org/libs-snapshot</url>
+      <url>https://repo.springsource.org/libs-snapshot</url>
     </repository>
   </repositories>
 </project>
