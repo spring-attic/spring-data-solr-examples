@@ -1,13 +1,13 @@
 #################################################################################
 #                                                                               # 
 #    In order to run this example a solr 4.1 server has to be available.        #            
-#    You may download it from the solr website http://lucene.apache.org/solr    #
+#    You may download it from the solr website https://lucene.apache.org/solr    #
 #                                                                               #
 ################################################################################# 
    
 ### Installing Solr  ####
 1. Get solr
-   download: http://www.apache.org/dyn/closer.cgi/lucene/solr/4.1.0
+   download: https://www.apache.org/dyn/closer.cgi/lucene/solr/4.1.0
    
 2. Start solr server
    extract: unarchive to destination directory
